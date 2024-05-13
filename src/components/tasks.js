@@ -1,5 +1,6 @@
 import React,{useState, useRef} from 'react'
 import {BiCheckSquare, BiSolidTrash, BiPlayCircle, BiPauseCircle} from "react-icons/bi"
+import Timer from './timer';
 
 
 function Tasks(){
@@ -64,17 +65,21 @@ function Tasks(){
                     {tasksList.map((task, taskindex)=>(
                         <li 
                         key={taskindex}
-                        className = {`userTask ${task.completed ? 'completedTask' : ''}`}>
+                        className = {`userTask ${task.completed ? 'completedTask' : ''} 
+                        ${task.started ? 'startedTask' : ''}`}>
                             <div className='userTask'>{task.task}</div>
                             <div className='taskButtons'>
-                                <div className='startTask' onClickCapture={()=>taskTimer(taskindex)}>
+                                <div className = 'Timer'>
+                                    {task.started && <Timer/>}
+                                </div>
+                                <div className='startTask' onClick={()=>taskTimer(taskindex)}>
                                     {task.started ? <BiPauseCircle/> : <BiPlayCircle/>}
                                 </div>
                                 <div className='delete' onClick={() => removeTask(taskindex)}>
-                                    <BiSolidTrash/>                                
+                                    {!task.started && <BiSolidTrash/>}                               
                                 </div>
                                 <div className='completed' onClick={() => completedTask(taskindex)}>
-                                    <BiCheckSquare/>
+                                    {!task.started && <BiCheckSquare/>}  
                                 </div>
                             </div>
                         </li>

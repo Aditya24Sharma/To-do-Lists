@@ -2,28 +2,25 @@ import React,{useState, useEffect} from "react";
 
 function Timer(){
 
-  const [time, setTime] = useState(300);
+  const [time, setTime] = useState(0);
 
   useEffect(() => {
-    let timer = setInterval(() => {
-      setTime((time) => {
-        if (time === 0) {
-          clearInterval(timer);
-          return 0;
-        } else return time - 1;
-      });
+    let timer = setTimeout(() => {
+      setTime(time + 1);
     }, 1000);
-  }, []);
+    
+    return () => clearTimeout(timer);
+  }, [time]);
 
 
   return (
-    <div className="App">
+    <div className="timer">
       <p>
-        Time left: {`${Math.floor(time / 60)}`.padStart(2, 0)}:
+        {`${Math.floor(time / 60)}`.padStart(2, 0)}:
         {`${time % 60}`.padStart(2, 0)}
       </p>
     </div>
   );
 }
 
-export default Timer();
+export default Timer;

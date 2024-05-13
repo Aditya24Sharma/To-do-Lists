@@ -124,7 +124,11 @@ body {
 
 .output-container li.userTask.completedTask{
   text-decoration: line-through 2px solid black ;
-  padding: 6px;
+}
+
+.output-container li.userTask.startedTask{
+  color : white;
+  background-color: black;
 }
 
 .output-container li .taskButtons{
@@ -166,3 +170,9 @@ body {
   cursor: pointer;
 }
 
+.timer{
+  display: flex;
+  font-size: 18px;
+  margin-right: 2px;
+  color: rgb(204, 204, 204);
+}

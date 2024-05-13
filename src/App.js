@@ -1,6 +1,5 @@
 import Header from './components/header'
 import Tasks from './components/tasks'
-// import Timer from './components/timer'
 import './App.css';
 
 function App() {
@@ -8,9 +7,7 @@ function App() {
     <>
       <Header/>
       <Tasks/>
-      {/* <Timer/> */}
     </>
   )
   }
-
 export default App;
